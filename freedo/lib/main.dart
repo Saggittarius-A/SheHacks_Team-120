@@ -5,7 +5,10 @@ import 'package:freedo/SecondPage.dart';
 import 'package:freedo/FirstPage.dart';
 import 'package:freedo/home.dart';
 import 'package:freedo/home_screen.dart';
+import 'package:freedo/chat_grp.dart';
 
+import 'SecondPage.dart';
+import 'SecondPage.dart';
 
 void main() {
   runApp(ChatApp());
@@ -19,6 +22,7 @@ class ChatApp extends StatelessWidget {
       routes: {
         FirstPage.id: (context) => FirstPage(),
         Home.id: (context) => Home(),
+        SecondPage.id: (context) => SecondPage(),
       },
     );
   }
