@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:freedo/SecondPage.dart';
 import 'package:freedo/FirstPage.dart';
-import 'package:freedo/delayed_animation.dart';
+import 'package:freedo/home.dart';
+import 'package:freedo/home_screen.dart';
 
 
 void main() {
@@ -17,7 +18,7 @@ class ChatApp extends StatelessWidget {
       initialRoute: FirstPage.id,
       routes: {
         FirstPage.id: (context) => FirstPage(),
-        SecondPage.id: (context) => SecondPage(),
+        Home.id: (context) => Home(),
       },
     );
   }

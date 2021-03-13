@@ -69,7 +69,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 padding: const EdgeInsets.only(
                     bottom: 36.0, left: 24.0, right: 24.0),
                 child: Text(
-                  tr("name"),
+                  "name",
                   style: TextStyle(
                     fontSize: 22,
                     color: Colors.white,
@@ -103,7 +103,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      tr("logout"),
+                      "logout",
                       style: TextStyle(fontSize: 18),
                     ),
                   ),

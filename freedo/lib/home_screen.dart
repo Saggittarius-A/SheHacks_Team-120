@@ -1,60 +1,94 @@
-import 'dart:ui' as ui;
-
 import 'package:easy_localization/easy_localization.dart';
-import 'package:freedo/home_screen.dart';
+import 'package:freedo/menu_page.dart';
+import 'package:freedo/page_structure.dart';
+import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(EasyLocalization(
-  path: "assets/langs",
-  child: MyApp(),
-  supportedLocales: MyApp.list,
-  useOnlyLangCode: true,
-));
-
-class MyApp extends StatelessWidget {
-  static const list = [
-    Locale('en', 'US'),
-    Locale('ar', 'TN'),
+class HomeScreen extends StatefulWidget {
+  static List<MenuItem> mainMenu = [
+    MenuItem("payment", Icons.payment, 0),
+    MenuItem("promos", Icons.card_giftcard, 1),
+    MenuItem("notifications", Icons.notifications, 2),
+    MenuItem("help", Icons.help, 3),
+    MenuItem("about_us", Icons.info_outline, 4),
   ];
 
   @override
-  Widget build(BuildContext context) {
-    final windowLocale = ui.window.locale;
-    Locale locale;
-    try {
-      final first = MyApp.list
-          ?.firstWhere((l) => l?.languageCode == windowLocale?.languageCode);
-      locale = first != null ? first : Locale('en', 'US');
-    } catch (e) {
-      print(e);
-    }
+  _HomeScreenState createState() => new _HomeScreenState();
 
-    return MaterialApp(
-      title: 'Flutter Zoom Drawer Demo',
-      onGenerateTitle: (context) => tr("app_name"),
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        //app-specific localization
-        EasyLocalization
-            .of(context)
-            .delegate,
-      ],
-      supportedLocales: EasyLocalization
-          .of(context)
-          .supportedLocales,
-      locale: locale,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        accentColor: Colors.deepPurpleAccent,
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final _drawerController = ZoomDrawerController();
+
+  int _currentPage = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return ZoomDrawer(
+      controller: _drawerController,
+      menuScreen: MenuScreen(
+        HomeScreen.mainMenu,
+        callback: _updatePage,
+        current: _currentPage,
       ),
-      home: ChangeNotifierProvider(
-        create: (_) => MenuProvider(),
-        child: HomeScreen(),
+      mainScreen: MainScreen(),
+      borderRadius: 24.0,
+      showShadow: true,
+      angle: -12.0,
+      slideWidth: MediaQuery.of(context).size.width * (ZoomDrawer.isRTL() ? .45 : 0.65),
+      openCurve: Curves.fastOutSlowIn,
+      //closeCurve: Curves.bounceIn,
+    );
+  }
+
+  void _updatePage(index) {
+    Provider.of<MenuProvider>(context, listen: false).updateCurrentPage(index);
+    _drawerController.toggle();
+  }
+}
+
+class MainScreen extends StatefulWidget {
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  @override
+  Widget build(BuildContext context) {
+    final rtl = ZoomDrawer.isRTL();
+    return ValueListenableBuilder<DrawerState>(
+      valueListenable: ZoomDrawer.of(context).stateNotifier,
+      builder: (context, state, child) {
+        return AbsorbPointer(
+          absorbing: state != DrawerState.closed,
+          child: child,
+        );
+      },
+      child: GestureDetector(
+        child: PageStructure(),
+        onPanUpdate: (details) {
+          if (details.delta.dx < 6 && !rtl || details.delta.dx < -6 && rtl) {
+            ZoomDrawer.of(context).toggle();
+          }
+        },
       ),
     );
+  }
+}
+
+class MenuProvider extends ChangeNotifier {
+  int _currentPage = 0;
+
+  int get currentPage => _currentPage;
+
+  void updateCurrentPage(int index) {
+    if (index != currentPage) {
+      _currentPage = index;
+      notifyListeners();
+    }
   }
 }

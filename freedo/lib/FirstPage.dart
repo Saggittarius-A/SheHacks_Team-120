@@ -1,8 +1,9 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:freedo/SecondPage.dart';
+// import 'package:freedo/SecondPage.dart';
 import 'package:freedo/delayed_animation.dart';
+import 'package:freedo/home.dart';
 
 class FirstPage extends StatefulWidget {
   static const String id = 'FirstPage';
@@ -101,7 +102,7 @@ class _Page1 extends State<FirstPage> with SingleTickerProviderStateMixin {
                 DelayedAnimation(
                   child: RaisedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, SecondPage.id);
+                      Navigator.pushNamed(context, Home.id);///////////////////////////////////////////////////////////
                     },
                     color: Colors.deepPurple,
                     child: Text(

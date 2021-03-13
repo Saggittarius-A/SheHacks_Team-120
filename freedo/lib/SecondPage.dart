@@ -29,10 +29,10 @@ class _WelcomeScreenState extends State<SecondPage>
           menuScreen: null,
           mainScreen: null,
           borderRadius: 24.0,
-          showShadow: true,
-          angle: -12.0,
+          showShadow: false,
+          angle: 0.0,
           backgroundColor: Colors.grey[300],
-          slideWidth: MediaQuery.of(context).size.width*.65,
+          slideWidth: MediaQuery.of(context).size.width*(ZoomDrawer.isRTL()? .45: 0.65),
           openCurve: Curves.fastOutSlowIn,
           closeCurve: Curves.bounceIn,
         )

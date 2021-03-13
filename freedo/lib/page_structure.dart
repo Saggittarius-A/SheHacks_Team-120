@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class PageStructure extends StatelessWidget {
   final String title;
@@ -35,7 +36,7 @@ class PageStructure extends StatelessWidget {
       color: Colors.grey[300],
       child: Center(
         child: Text(
-            "${tr("current")}: ${HomeScreen.mainMenu[_currentPage].title}"),
+            "${"current"}: ${HomeScreen.mainMenu[_currentPage].title}"),
       ),
     );
     final color = Theme
@@ -44,7 +45,7 @@ class PageStructure extends StatelessWidget {
     final style = TextStyle(color: color);
 
     return PlatformScaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.purpleAccent,
       appBar: PlatformAppBar(
         automaticallyImplyLeading: false,
         android: (_) => MaterialAppBarData(elevation: elevation),
@@ -84,12 +85,21 @@ class PageStructure extends StatelessWidget {
         )
             .toList(),
       ),
-      body: kIsWeb
-          ? container
-          : Platform.isAndroid
-          ? container
-          : SafeArea(
-        child: container,
+      body: new StaggeredGridView.countBuilder(
+        crossAxisCount: 4,
+        itemCount: 12,
+        itemBuilder: (BuildContext context, int index) => new Container(
+            color: Colors.blueGrey,
+            child: new Center(
+              child: new CircleAvatar(
+                backgroundColor: Colors.white,
+                child: new Text('$index'),
+              ),
+            )),
+        staggeredTileBuilder: (int index) =>
+        new StaggeredTile.count(2, index.isEven ? 2 : 1),
+        mainAxisSpacing: 4.0,
+        crossAxisSpacing: 4.0,
       ),
     );
   }
