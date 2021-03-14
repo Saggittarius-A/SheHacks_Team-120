@@ -1,5 +1,4 @@
 # SheHacks
-# SheHacks
 # Freedo : Inspire , Represent and Speak : Our mission is to spread real women’s stories and content to inspire positive change and impact society at large. We do that by promoting women’s achievements, inspiring personal style and celebrating sisterhood.
 What id Freedo :
 An app focused on women and their empowerment (An idea that is inspired by an Italian startup has become very successful and gained popularity because of the difference it is creating in the mindset of Italian women ) , an app that is exclusively focused on women to motivate them towards their goals , provide financial awareness and help them connect with the other women of their type and best of all its for girls of all age groups , that it has content sorted on the basis of the age of the user. 
