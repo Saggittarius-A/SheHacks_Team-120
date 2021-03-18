@@ -27,4 +27,3 @@ An app focused on women and their empowerment (An idea that is inspired by an It
 ####  DEMO LINK: https://youtu.be/9JN7IdD3iFo
 
 ## screenshots
-![Screenshot_1615033219](https://user-images.githubusercontent.com/57368869/111679587-55e41a80-8847-11eb-818f-c095eaf36d3e.png)
