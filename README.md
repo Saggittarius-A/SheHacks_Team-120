@@ -28,3 +28,4 @@ An app focused on women and their empowerment (An idea that is inspired by an It
 
 ## screenshots
 ![BeFunky-collage (1)](https://user-images.githubusercontent.com/57368869/111685114-89c23e80-884d-11eb-9d22-04a2acbbce04.jpg)
+![BeFunky-collage (2)](https://user-images.githubusercontent.com/57368869/111686175-c3477980-884e-11eb-84a2-c9186c0f7142.jpg)
