@@ -4,9 +4,17 @@ import 'package:freedo/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:freedo/pages/authenticate_page.dart';
+import 'package:freedo/services/auth_service.dart';
 import 'package:provider/provider.dart';
+import 'package:freedo/services12/signin.dart';
+import 'package:freedo/helper/helper_functions.dart';
+import 'services12/shared_preferences.dart';
 
 class MenuScreen extends StatefulWidget {
+  String userName;
+  String email;
+
   final List<MenuItem> mainMenu;
   final Function(int) callback;
   final int current;
@@ -15,7 +23,7 @@ class MenuScreen extends StatefulWidget {
     this.mainMenu, {
     Key key,
     this.callback,
-    this.current,
+    this.current, String userName, String email,
   });
 
   @override
@@ -23,7 +31,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-
+  final AuthService _auth = AuthService();
   final widthBox = SizedBox(
     width: 16.0,
   );
@@ -69,13 +77,26 @@ class _MenuScreenState extends State<MenuScreen> {
               Padding(
                 padding: const EdgeInsets.only(
                     bottom: 36.0, left: 24.0, right: 24.0),
-                child: Text(
-                  "name",
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900, fontFamily: 'Amatic SC'
-                  ),
+                child: Column(
+                    children:<Widget> [
+                      Text(
+                        "name : "+ HelperFunctions.sharedPreferenceUserEmailKey,
+                        style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900, fontFamily: 'Amatic SC'
+                        ),
+                      ),
+                      SizedBox(height: 5,),
+                      Text(
+                        "Personality: "+ SharedPreferencesUtil.sharedPreferencesPersonalityKey ,
+                        style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900, fontFamily: 'Amatic SC'
+                        ),
+                      )
+                    ]
                 ),
               ),
               Selector<MenuProvider, int>(
@@ -109,7 +130,10 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                   ),
                   borderSide: BorderSide(color: Colors.white, width: 2.0),
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () async {
+                    await _auth.signOut();
+                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => AuthenticatePage()), (Route<dynamic> route) => false);
+                  },
                   textColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16.0)),

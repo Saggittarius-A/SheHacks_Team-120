@@ -1,49 +1,42 @@
 {
   "project_info": {
-    "project_number": "868232653178",
-    "project_id": "freedo-8eb98",
-    "storage_bucket": "freedo-8eb98.appspot.com"
+    "project_number": "484604442183",
+    "project_id": "freeda-d734c",
+    "storage_bucket": "freeda-d734c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:868232653178:android:c28eda003612b3e2288ec3",
+        "mobilesdk_app_id": "1:484604442183:android:8ab30a5f6d83ed9f8da362",
         "android_client_info": {
           "package_name": "com.example.freedo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "868232653178-16v85qjf0jjfrac0sgnle67gjlmtqp7t.apps.googleusercontent.com",
+          "client_id": "484604442183-28oe71738uhvf8mghv57e3br266r0h1n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.freedo",
-            "certificate_hash": "15fc5b5f3d6630868ee9ef94f73d1e9f7c7d9527"
+            "certificate_hash": "27a311f31f3b7def8a2e59ba1995196c7a2a39e2"
           }
         },
         {
-          "client_id": "868232653178-k7mqjqv4inlr2jba0sv7u6vilbc7ttcp.apps.googleusercontent.com",
+          "client_id": "484604442183-oqmnrcj0dkkjdnr319sa5ar8s16f6qe5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDAFJ4JCJ-_YHIOGLTBSyX1_YgIII20BTo"
+          "current_key": "AIzaSyBDbFQtDoBz7eYU64RXO3d0hZ7ISZUwRmI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "868232653178-k7mqjqv4inlr2jba0sv7u6vilbc7ttcp.apps.googleusercontent.com",
+              "client_id": "484604442183-oqmnrcj0dkkjdnr319sa5ar8s16f6qe5.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "868232653178-d5l5r6005u73ku8c7qrfdalt3v1kh33l.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.freedo"
-              }
             }
           ]
         }

@@ -45,21 +45,21 @@ class _ListChatState extends State<ListChat> {
       "content": "ESFJ-A / ESFJ-T",
       "image": "images/cansul.jpg",
       "des":
-          "Extraordinarily caring, social and popular people, always eager to help"
+      "Extraordinarily caring, social and popular people, always eager to help"
     },
     {
       "title": "Commander",
       "content": "ENTJ-A / ENTJ-T",
       "image": "images/commander.jpg",
       "des":
-          "Bold, imaginative and strong-willed leader, always finding a way - or making one"
+      "Bold, imaginative and strong-willed leader, always finding a way - or making one"
     },
     {
       "title": "Compaigner",
       "content": "ENFP-A / ENFP-T",
       "image": "images/compaigner.jpg",
       "des":
-          "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile"
+      "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile"
     },
     {
       "title": "Debater",
@@ -72,7 +72,7 @@ class _ListChatState extends State<ListChat> {
       "content": "ISFJ-A / ISFJ-T",
       "image": "images/defender.jpg",
       "des":
-          "Very dedicated and warm protectors, always ready to defend their loved ones"
+      "Very dedicated and warm protectors, always ready to defend their loved ones"
     },
     {
       "title": "Entrepreneur",
@@ -91,7 +91,7 @@ class _ListChatState extends State<ListChat> {
       "content": "ESTJ-A / ESTJ-T",
       "image": "images/executive.jpg",
       "des":
-          "Excellent administrators, unsarpassed at managing things- or people"
+      "Excellent administrators, unsarpassed at managing things- or people"
     },
     {
       "title": "Logician",
@@ -104,14 +104,14 @@ class _ListChatState extends State<ListChat> {
       "content": "INFP-A / INFP-T",
       "image": "images/mediator.jpg",
       "des":
-          "Poetic, kind and altruistic people,always eager to help a good cause"
+      "Poetic, kind and altruistic people,always eager to help a good cause"
     },
     {
       "title": "Protagonist",
       "content": "ENFJ-A / ENFJ-T",
       "image": "images/protagonist.jpg",
       "des":
-          "Charismatic and inspiring leaders, able to mesmerize their listeners"
+      "Charismatic and inspiring leaders, able to mesmerize their listeners"
     },
     {
       "title": "Virtuosa",

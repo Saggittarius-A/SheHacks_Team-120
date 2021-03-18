@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:freedo/services/shared_preferences.dart';
+import 'package:freedo/services12/shared_preferences.dart';
 
 class DatabaseServices {
   final String uid;

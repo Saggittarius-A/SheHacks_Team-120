@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:freedo/services12/shared_preferences.dart';
 
 var COLORS = [
   Color(0xFFEF7A85),
@@ -270,7 +273,8 @@ class _AwesomeListItemState extends State<AwesomeListItem> {
                   child: new RaisedButton(
                     color: Colors.deepPurple,
                     highlightColor: Colors.blue,
-                    onPressed: () {},
+                    onPressed: () {
+                    },         ///////////////////////////////////////////////
                     child: Text(
                      widget.title,
                         style: TextStyle(

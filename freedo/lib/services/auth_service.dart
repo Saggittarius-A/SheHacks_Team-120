@@ -1,41 +1,68 @@
-import 'package:freedo/services/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:freedo/helper/helper_functions.dart';
+import 'package:freedo/models/user.dart';
+import 'package:freedo/services/database_service.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  AuthResult result;
-  FirebaseUser user;
-  Future<bool> signInGoogle() async {
+
+
+  // create user object based on FirebaseUser
+  User _userFromFirebaseUser(FirebaseUser user) {
+    return (user != null) ? User(uid: user.uid) : null;
+  }
+
+
+  // sign in with email and password
+  Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      GoogleSignIn googleSignIn = GoogleSignIn();
-      GoogleSignInAccount account = await googleSignIn.signIn();
-      if (account == null) {
-        return false;
-      } else {
-        result = await _auth.signInWithCredential(
-            GoogleAuthProvider.getCredential(
-                idToken: (await account.authentication).idToken,
-                accessToken: (await account.authentication).accessToken));
-        if (result.user == null) {
-          return false;
-        } else {
-          user = result.user;
-          SharedPreferencesUtil.saveUserName(user.displayName);
-          SharedPreferencesUtil.saveUserUid(user.uid);
-          return true;
-        }
-      }
-    } catch (error) {
-      print(error);
-      return false;
+      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      FirebaseUser user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch(e) {
+      print(e.toString());
+      return null;
     }
   }
 
-  signOutUser() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.clear();
-    await _auth.signOut();
+
+  // register with email and password
+  Future registerWithEmailAndPassword(String fullName, String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      FirebaseUser user = result.user;
+
+      // Create a new document for the user with uid
+      await DatabaseService(uid: user.uid).updateUserData(fullName, email);
+      return _userFromFirebaseUser(user);
+    } catch(e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  //sign out
+  Future signOut() async {
+    try {
+      await HelperFunctions.saveUserLoggedInSharedPreference(false);
+      await HelperFunctions.saveUserEmailSharedPreference('');
+      await HelperFunctions.saveUserNameSharedPreference('');
+
+      return await _auth.signOut().whenComplete(() async {
+        print("Logged out");
+        await HelperFunctions.getUserLoggedInSharedPreference().then((value) {
+          print("Logged in: $value");
+        });
+        await HelperFunctions.getUserEmailSharedPreference().then((value) {
+          print("Email: $value");
+        });
+        await HelperFunctions.getUserNameSharedPreference().then((value) {
+          print("Full Name: $value");
+        });
+      });
+    } catch(e) {
+      print(e.toString());
+      return null;
+    }
   }
 }
