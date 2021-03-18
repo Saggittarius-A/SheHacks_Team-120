@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "868232653178",
+    "project_id": "freedo-8eb98",
+    "storage_bucket": "freedo-8eb98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868232653178:android:c28eda003612b3e2288ec3",
+        "android_client_info": {
+          "package_name": "com.example.freedo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868232653178-16v85qjf0jjfrac0sgnle67gjlmtqp7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.freedo",
+            "certificate_hash": "15fc5b5f3d6630868ee9ef94f73d1e9f7c7d9527"
+          }
+        },
+        {
+          "client_id": "868232653178-k7mqjqv4inlr2jba0sv7u6vilbc7ttcp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAFJ4JCJ-_YHIOGLTBSyX1_YgIII20BTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868232653178-k7mqjqv4inlr2jba0sv7u6vilbc7ttcp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868232653178-d5l5r6005u73ku8c7qrfdalt3v1kh33l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.freedo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

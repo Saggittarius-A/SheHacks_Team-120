@@ -12,11 +12,11 @@ class MenuScreen extends StatefulWidget {
   final int current;
 
   MenuScreen(
-      this.mainMenu, {
-        Key key,
-        this.callback,
-        this.current,
-      });
+    this.mainMenu, {
+    Key key,
+    this.callback,
+    this.current,
+  });
 
   @override
   _MenuScreenState createState() => _MenuScreenState();
@@ -31,8 +31,9 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     final TextStyle androidStyle = const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white);
-    final TextStyle iosStyle = const TextStyle(color: Colors.white);
+        fontSize: 20, fontWeight: FontWeight.w900, color: Colors.white,
+    fontFamily: 'Amatic SC');
+    final TextStyle iosStyle = const TextStyle(color: Colors.white,fontFamily: 'Amatic SC',fontWeight: FontWeight.w900, fontSize: 20);
     final style = kIsWeb? androidStyle: Platform.isAndroid ? androidStyle : iosStyle;
 
     return Scaffold(
@@ -40,8 +41,8 @@ class _MenuScreenState extends State<MenuScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Theme.of(context).primaryColor,
-              Colors.indigo,
+              Colors.deepPurple,
+              Colors.deepPurpleAccent,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -73,7 +74,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   style: TextStyle(
                     fontSize: 22,
                     color: Colors.white,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w900, fontFamily: 'Amatic SC'
                   ),
                 ),
               ),
@@ -85,13 +86,13 @@ class _MenuScreenState extends State<MenuScreen> {
                   children: <Widget>[
                     ...widget.mainMenu
                         .map((item) => MenuItemWidget(
-                      key: Key(item.index.toString()),
-                      item: item,
-                      callback: widget.callback,
-                      widthBox: widthBox,
-                      style: style,
-                      selected: index == item.index,
-                    ))
+                              key: Key(item.index.toString()),
+                              item: item,
+                              callback: widget.callback,
+                              widthBox: widthBox,
+                              style: style,
+                              selected: index == item.index,
+                            ))
                         .toList()
                   ],
                 ),
@@ -104,7 +105,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "logout",
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 20,fontFamily: 'Amatic SC', fontWeight: FontWeight.w900),
                     ),
                   ),
                   borderSide: BorderSide(color: Colors.white, width: 2.0),
@@ -135,11 +136,11 @@ class MenuItemWidget extends StatelessWidget {
 
   const MenuItemWidget(
       {Key key,
-        this.item,
-        this.widthBox,
-        this.style,
-        this.callback,
-        this.selected})
+      this.item,
+      this.widthBox,
+      this.style,
+      this.callback,
+      this.selected})
       : super(key: key);
 
   @override

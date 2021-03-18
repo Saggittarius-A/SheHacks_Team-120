@@ -13,9 +13,7 @@ class Home extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Zoom Drawer Demo',
-
       debugShowCheckedModeBanner: false,
-
       home: ChangeNotifierProvider(
         create: (_) => MenuProvider(),
         child: HomeScreen(),

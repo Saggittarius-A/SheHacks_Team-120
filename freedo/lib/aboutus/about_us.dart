@@ -234,7 +234,7 @@ class _AbboutUsState extends State<AbboutUs> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 2.0),
+                padding: const EdgeInsets.all(0.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.center,

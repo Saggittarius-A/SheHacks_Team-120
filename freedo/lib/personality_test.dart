@@ -1,17 +1,9 @@
 import 'dart:math';
-import 'package:freedo/menu_page.dart';
-import 'package:freedo/services/shared_preferences.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'home_screen.dart';
-import 'home_screen.dart';
-import 'services/shared_preferences.dart';
-import 'services/shared_preferences.dart';
-import 'services/shared_preferences.dart';
 
 var COLORS = [
   Color(0xFFEF7A85),
@@ -261,7 +253,6 @@ class AwesomeListItem extends StatefulWidget {
 }
 
 class _AwesomeListItemState extends State<AwesomeListItem> {
-  Color c = Colors.deepPurple;
   @override
   Widget build(BuildContext context) {
     return new Row(
@@ -277,16 +268,9 @@ class _AwesomeListItemState extends State<AwesomeListItem> {
                 new Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: new RaisedButton(
-                    color: c,
+                    color: Colors.deepPurple,
                     highlightColor: Colors.blue,
-                    onPressed: () {
-                      c=Colors.lightBlue;
-                      MenuProvider().notifyListeners();
-                      SharedPreferencesUtil.sharedPreferencesPersonalityKey=widget.title;
-                      SharedPreferencesUtil.saveUserPersonality(widget.title);
-                      print (SharedPreferencesUtil.sharedPreferencesPersonalityKey);
-                     //
-                    },
+                    onPressed: () {},
                     child: Text(
                      widget.title,
                         style: TextStyle(

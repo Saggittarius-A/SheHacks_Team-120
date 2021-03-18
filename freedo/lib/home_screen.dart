@@ -9,16 +9,15 @@ import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static List<MenuItem> mainMenu = [
-    MenuItem("payment", Icons.payment, 0),
-    MenuItem("promos", Icons.card_giftcard, 1),
+    MenuItem("Home", Icons.home, 0),
+    MenuItem("Personality Test", Icons.assignment_ind_outlined, 1),
     MenuItem("notifications", Icons.notifications, 2),
-    MenuItem("help", Icons.help, 3),
+    MenuItem("chats", Icons.chat, 3),
     MenuItem("about_us", Icons.info_outline, 4),
   ];
 
   @override
   _HomeScreenState createState() => new _HomeScreenState();
-
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -38,9 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
       mainScreen: MainScreen(),
       borderRadius: 24.0,
       showShadow: true,
-      angle: -12.0,
-      slideWidth: MediaQuery.of(context).size.width * (ZoomDrawer.isRTL() ? .45 : 0.65),
-      openCurve: Curves.fastOutSlowIn,
+      angle: 0.0,
+      slideWidth:
+          MediaQuery.of(context).size.width * (ZoomDrawer.isRTL() ? .45 : 0.65),
+      // openCurve: Curves.fastOutSlowIn,
       //closeCurve: Curves.bounceIn,
     );
   }

@@ -1,9 +1,25 @@
+import 'dart:io';
+
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:freedo/SecondPage.dart';
+import 'package:freedo/SecondPage.dart';
 import 'package:freedo/delayed_animation.dart';
-import 'package:freedo/home.dart';
+import 'package:freedo/services/auth_service.dart';
+import 'package:freedo/services/shared_preferences.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+import 'home.dart';
+
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
+final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+String useremail;
+
 
 class FirstPage extends StatefulWidget {
   static const String id = 'FirstPage';
@@ -12,11 +28,20 @@ class FirstPage extends StatefulWidget {
 }
 
 class _Page1 extends State<FirstPage> with SingleTickerProviderStateMixin {
+
+  bool isUserSignedIn = false;
   final int delayedAmount = 500;
   double _scale;
   AnimationController _controller;
+  String uid;
+
+  getUid() async {
+    uid = await SharedPreferencesUtil.getUserUid();
+  }
+
   @override
-  void initState() {
+  void initState()  {
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
     _controller = AnimationController(
       vsync: this,
       duration: Duration(
@@ -30,8 +55,12 @@ class _Page1 extends State<FirstPage> with SingleTickerProviderStateMixin {
     super.initState();
   }
 
+
+  AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+
+
     final color = Colors.white;
     _scale = 1 - _controller.value;
     return MaterialApp(
@@ -101,10 +130,14 @@ class _Page1 extends State<FirstPage> with SingleTickerProviderStateMixin {
                 SizedBox(height: 20.0,),
                 DelayedAnimation(
                   child: RaisedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Home.id);///////////////////////////////////////////////////////////
+                    onPressed: () async {
+                      signInWithGoogle().whenComplete(() => {
+                        getUid(),
+                      Navigator.pushNamed(
+                      context,Home.id)
+                      });
                     },
-                    color: Colors.deepPurple,
+                   color: Colors.deepPurple,
                     child: Text(
                       "I Already have An Account".toUpperCase(),
                       style: TextStyle(
@@ -147,16 +180,28 @@ class _Page1 extends State<FirstPage> with SingleTickerProviderStateMixin {
       Row(
         children: [
           SizedBox(width: 60.0,),
-          Text(
-            'Sign In with ',
-            style: TextStyle(
-              fontFamily: 'Amatic SC',
-              fontSize: 25.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.indigo,
+          FlatButton(
+            onPressed: () async {
+              bool result = await _auth.signInGoogle();
+              if (result != false) {
+                getUid();
+                Navigator.pushNamed(
+                    context,Home.id);
+              } else {
+                print('error occured');
+              }
+            },
+            child: Text(
+              'Sign In with ',
+              style: TextStyle(
+                fontFamily: 'Amatic SC',
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.indigo,
+              ),
             ),
           ),
-          SizedBox(width: 62,),
+          SizedBox(width: 30,),
           Image(
             image: AssetImage('images/google.png'),
             alignment: Alignment.topLeft,
@@ -174,3 +219,38 @@ class _Page1 extends State<FirstPage> with SingleTickerProviderStateMixin {
     _controller.reverse();
   }
 }
+
+Future<FirebaseUser> signInWithGoogle() async {
+  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+  final GoogleSignInAuthentication googleSignInAuthentication =
+  await googleSignInAccount.authentication;
+
+  final AuthCredential credential = GoogleAuthProvider.getCredential(
+    accessToken: googleSignInAuthentication.accessToken,
+    idToken: googleSignInAuthentication.idToken,
+  );
+
+  final AuthResult authResult =
+  await _firebaseAuth.signInWithCredential(credential);
+  final FirebaseUser user = authResult.user;
+
+  final FirebaseUser currentUser = await _firebaseAuth.currentUser();
+  if (currentUser != null) {
+    final QuerySnapshot result = await Firestore.instance
+        .collection('users')
+        .where("id", isEqualTo: currentUser.uid)
+        .getDocuments();
+    final List<DocumentSnapshot> document = result.documents;
+    if (document.length == 0) {
+      Firestore.instance
+          .collection('users')
+          .document(currentUser.uid)
+          .setData({
+        'id': currentUser.uid,
+        'useremail': currentUser.email,
+      });
+    } else {}
+  }
+  return user;
+}
+

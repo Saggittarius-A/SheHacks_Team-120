@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>868232653178-d5l5r6005u73ku8c7qrfdalt3v1kh33l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.868232653178-d5l5r6005u73ku8c7qrfdalt3v1kh33l</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>868232653178-16v85qjf0jjfrac0sgnle67gjlmtqp7t.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBXJrrAHv_e6_DrT8rIEDb80Ayj0JJrJ-Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>868232653178</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.freedo</string>
+	<key>PROJECT_ID</key>
+	<string>freedo-8eb98</string>
+	<key>STORAGE_BUCKET</key>
+	<string>freedo-8eb98.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:868232653178:ios:4764cc4f878b1dcf288ec3</string>
+</dict>
+</plist>
