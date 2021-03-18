@@ -21,9 +21,10 @@ An app focused on women and their empowerment (An idea that is inspired by an It
 6. Consultancy and Self-help channel.
 
 <a href="https://ibb.co/92MhVDt"><img src="https://i.ibb.co/FJPX0rV/Screenshot-345.png" alt="Screenshot-345" border="0"></a>
-# Lets Celebrate SISTERHOOD.
+## Lets Celebrate SISTERHOOD.
 
 #### PPT LINK: https://www.youtube.com/watch?v=8YDoCOfkdus
-####  DEMO LINK: https://youtu.be/9JN7IdD3iFo
+####  DEMO LINK: https://www.youtube.com/watch?v=MnoQQwjvoTc
 
 ## screenshots
+![BeFunky-collage (1)](https://user-images.githubusercontent.com/57368869/111685114-89c23e80-884d-11eb-9d22-04a2acbbce04.jpg)
